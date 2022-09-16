@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\SmartCookbook.Comunicacao\SmartCookbook.Comunicacao.csproj" />
+    <ProjectReference Include="..\..\Shared\SmartCookbook.Exceptions\SmartCookbook.Exceptions.csproj" />
+    <ProjectReference Include="..\SmartCookbook.Domain\SmartCookbook.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
