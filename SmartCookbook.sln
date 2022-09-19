@@ -11,23 +11,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{29C5
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{1774081E-DD22-42AB-AED0-F53D224494D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartCookbook.Comunicacao", "src\Shared\SmartCookbook.Comunicacao\SmartCookbook.Comunicacao.csproj", "{335E609A-D553-4A70-91D1-B659F9934309}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartCookbook.Comunicacao", "src\Shared\SmartCookbook.Comunicacao\SmartCookbook.Comunicacao.csproj", "{335E609A-D553-4A70-91D1-B659F9934309}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartCookbook.Exceptions", "src\Shared\SmartCookbook.Exceptions\SmartCookbook.Exceptions.csproj", "{06570D3F-8C1F-4E00-9B0B-2F11275C02B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartCookbook.Exceptions", "src\Shared\SmartCookbook.Exceptions\SmartCookbook.Exceptions.csproj", "{06570D3F-8C1F-4E00-9B0B-2F11275C02B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartCookbook.Application", "src\Backend\SmartCookbook.Application\SmartCookbook.Application.csproj", "{2E125B7A-D025-4EE3-AEC1-A2A9D7FB4DB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartCookbook.Application", "src\Backend\SmartCookbook.Application\SmartCookbook.Application.csproj", "{2E125B7A-D025-4EE3-AEC1-A2A9D7FB4DB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartCookbook.Domain", "src\Backend\SmartCookbook.Domain\SmartCookbook.Domain.csproj", "{28FBB88B-6776-4B5B-93C9-A4C91D22E7DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartCookbook.Domain", "src\Backend\SmartCookbook.Domain\SmartCookbook.Domain.csproj", "{28FBB88B-6776-4B5B-93C9-A4C91D22E7DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartCookbook.Infrastructure", "src\Backend\SmartCookbook.Infrastructure\SmartCookbook.Infrastructure.csproj", "{AD190D1A-385A-4282-9A4B-422AA3190B47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartCookbook.Infrastructure", "src\Backend\SmartCookbook.Infrastructure\SmartCookbook.Infrastructure.csproj", "{AD190D1A-385A-4282-9A4B-422AA3190B47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartCookbook.API", "src\Backend\SmartCookbook.API\SmartCookbook.API.csproj", "{6F20B5DA-B910-433C-AFDF-38D23D574B5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartCookbook.API", "src\Backend\SmartCookbook.API\SmartCookbook.API.csproj", "{6F20B5DA-B910-433C-AFDF-38D23D574B5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validators.Test", "tests\Validators.Test\Validators.Test.csproj", "{BD9D4412-5C33-4092-BB77-DDB63B79322D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Validators.Test", "tests\Validators.Test\Validators.Test.csproj", "{BD9D4412-5C33-4092-BB77-DDB63B79322D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCases.Test", "tests\UseCases.Test\UseCases.Test.csproj", "{689844F4-7F78-443F-97AE-835845AFAE63}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UseCases.Test", "tests\UseCases.Test\UseCases.Test.csproj", "{689844F4-7F78-443F-97AE-835845AFAE63}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Test", "tests\WebApi.Test\WebApi.Test.csproj", "{A2A6FE11-377A-4217-889E-35BD8CC387CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Test", "tests\WebApi.Test\WebApi.Test.csproj", "{A2A6FE11-377A-4217-889E-35BD8CC387CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
