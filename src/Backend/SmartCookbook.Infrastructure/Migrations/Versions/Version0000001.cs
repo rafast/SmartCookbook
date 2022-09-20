@@ -12,7 +12,7 @@ public class Version0000001 : Migration
 
     public override void Up()
     {
-        var table = VersionBase.InsertDefaultColumns(Create.Table("User"));
+        var table = VersionBase.InsertDefaultColumns(Create.Table("Users"));
 
         table
             .WithColumn("Name").AsString(100).NotNullable()
