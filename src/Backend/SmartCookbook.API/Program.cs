@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SmartCookbook.API.Filters;
+using SmartCookbook.Application;
+using SmartCookbook.Application.Services.Automapper;
 using SmartCookbook.Domain.Extension;
 using SmartCookbook.Infrastructure;
 using SmartCookbook.Infrastructure.Migrations;
@@ -15,6 +18,17 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddRepository(builder.Configuration);
+builder.Services.AddApplication(builder.Configuration);
+
+builder.Services.AddMvc(opt =>
+{
+    opt.Filters.Add(typeof(FilterExceptions));
+});
+
+builder.Services.AddScoped(provider => new AutoMapper.MapperConfiguration(cfg =>
+{
+    cfg.AddProfile(new AutomapperConfig());
+}).CreateMapper());
 
 var app = builder.Build();
 
