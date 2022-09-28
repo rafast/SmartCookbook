@@ -5,5 +5,5 @@ namespace SmartCookbook.Domain.Repositories;
 public interface IUserReadOnlyRepository
 {
     Task<bool> IsEmailInUse(string email);
-    Task<User> Login(string email, string password);
+    Task<User> RecuperaPorEmailSenha(string email, string password);
 }
