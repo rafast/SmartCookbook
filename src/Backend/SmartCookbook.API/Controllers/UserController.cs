@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 
 namespace SmartCookbook.API.Controllers;
 
-[ApiController]
-[Route("[controller]")]
-public class UserController : ControllerBase
+public class UserController : SmartCookbookControllerBase
 {
     [HttpPost]
     [ProducesResponseType(typeof(ResponseUserRegisteredJson), StatusCodes.Status201Created)]

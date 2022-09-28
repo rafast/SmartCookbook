@@ -26,6 +26,6 @@ public class UserRepository : IUserReadOnlyRepository, IUserWriteOnlyRepository
     public async Task<User> RecuperaPorEmailSenha(string email, string password)
     {
         return await _context.Users.AsNoTracking()
-            .FirstOrDefaultAsync(user => user.Name.Equals(email) && user.Password.Equals(password));
+            .FirstOrDefaultAsync(user => user.Email.Equals(email) && user.Password.Equals(password));
     }
 }
