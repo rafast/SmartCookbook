@@ -27,6 +27,8 @@ public class FilterExceptions : IExceptionFilter
         {
             ValidationErrorExceptionHandler(context);
         }
+        else if(context.Exception is InvalidLoginException)
+            InvalidLoginExceptionHandler(context);
     }
 
     private void ValidationErrorExceptionHandler(ExceptionContext context)
