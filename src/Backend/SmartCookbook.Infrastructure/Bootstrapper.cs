@@ -22,22 +22,33 @@ public static class Bootstrapper
 
     private static void AddFluentMigrator(this IServiceCollection services, IConfiguration configurationManager)
     {
-        services.AddFluentMigratorCore().ConfigureRunner(c =>
+        bool.TryParse(configurationManager.GetSection("Configurations:DatabaseInMemory").Value, out bool databaseInMemory);
+
+        if (!databaseInMemory)
         {
-            c.AddMySql5()
-            .WithGlobalConnectionString(configurationManager.GetFullConnection()).ScanIn(Assembly.Load("SmartCookbook.Infrastructure")).For.All();
-        });
+            services.AddFluentMigratorCore().ConfigureRunner(c =>
+            {
+                c.AddMySql5()
+                 .WithGlobalConnectionString(configurationManager.GetFullConnection()).ScanIn(Assembly.Load("SmartCookbook.Infrastructure")).For.All();
+            });
+        }
     }
 
     private static void AddContext(IServiceCollection services, IConfiguration configurationManager)
     {
-        var serverVersion = new MySqlServerVersion(new Version(8, 0, 27));
-        var connectionString = configurationManager.GetFullConnection();
+        bool.TryParse(configurationManager.GetSection("Configurations:DatabaseInMemory").Value, out bool databaseInMemory);
 
-        services.AddDbContext<SmartCookbookContext>(dbContextOpts =>
+        if (!databaseInMemory)
         {
-            dbContextOpts.UseMySql(connectionString, serverVersion);
-        });
+            var serverVersion = new MySqlServerVersion(new Version(8, 0, 27));
+            var connectionString = configurationManager.GetFullConnection();
+
+            services.AddDbContext<SmartCookbookContext>(dbContextOpts =>
+            {
+                dbContextOpts.UseMySql(connectionString, serverVersion);
+            });
+        }
+
     }
 
     private static void AddUnityOfWork(IServiceCollection services)
