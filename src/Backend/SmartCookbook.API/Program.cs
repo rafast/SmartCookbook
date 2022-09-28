@@ -7,6 +7,7 @@ using SmartCookbook.Application.Services.Automapper;
 using SmartCookbook.Domain.Extension;
 using SmartCookbook.Infrastructure;
 using SmartCookbook.Infrastructure.Migrations;
+using SmartCookbook.Infrastructure.RepositoryAccess;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -52,10 +53,22 @@ app.Run();
 
 void UpdateDatabase()
 {
-    var connection = builder.Configuration.GetConnection();
-    var databaseName = builder.Configuration.GetDatabaseName();
+    using var serviceScope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope();
 
-    Database.CreateDatabase(connection, databaseName);
+    using var context = serviceScope.ServiceProvider.GetService<SmartCookbookContext>();
 
-    app.MigrateDatabase();
+    bool? databaseInMemory = context?.Database?.ProviderName?.Equals("Microsoft.EntityFrameworkCore.InMemory");
+
+    if (!databaseInMemory.HasValue || !databaseInMemory.Value)
+    {
+        var connection = builder.Configuration.GetConnection();
+        var databaseName = builder.Configuration.GetDatabaseName();
+
+        Database.CreateDatabase(connection, databaseName);
+
+        app.MigrateDatabase();
+    }
+
 }
+
+public partial class Program { }
