@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using SmartCookbook.Application.Cryptograph;
 using SmartCookbook.Application.Services.Token;
+using SmartCookbook.Application.UseCases.Login.DoLogin;
 using SmartCookbook.Application.UseCases.User.Register;
 
 namespace SmartCookbook.Application;
@@ -12,8 +13,8 @@ public static class Bootstraper
     {
         AddSaltPassword(services, configuration);
         AddJWTToken(services, configuration);
-
-        services.AddScoped<IRegisterUserUseCase, RegisterUserUseCase>();
+        AddUseCases(services);
+    
     }
 
     private static void AddSaltPassword(IServiceCollection services, IConfiguration configuration)
@@ -27,5 +28,11 @@ public static class Bootstraper
         var sectionExpirationTime = configuration.GetRequiredSection("Configurations:TokenExpirationTime");
         var sectionTokenKey = configuration.GetRequiredSection("Configurations:TokenKey");
         services.AddScoped(opt => new TokenController(int.Parse(sectionExpirationTime.Value), sectionTokenKey.Value));
+    }
+
+    private static void AddUseCases(IServiceCollection services)
+    {
+        services.AddScoped<IRegisterUserUseCase, RegisterUserUseCase>()
+                .AddScoped<ILoginUseCase, LoginUseCase>();
     }
 }
