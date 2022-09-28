@@ -132,6 +132,9 @@
   <data name="EMPTY_USER_PHONE" xml:space="preserve">
     <value>Phone is required</value>
   </data>
+  <data name="INVALID_LOGIN" xml:space="preserve">
+    <value>Invalid email or password</value>
+  </data>
   <data name="INVALID_USER_EMAIL" xml:space="preserve">
     <value>Email must be valid</value>
   </data>

@@ -27,6 +27,8 @@ public class FilterExceptions : IExceptionFilter
         {
             ValidationErrorExceptionHandler(context);
         }
+        else if(context.Exception is InvalidLoginException)
+            InvalidLoginExceptionHandler(context);
     }
 
     private void ValidationErrorExceptionHandler(ExceptionContext context)
@@ -41,5 +43,12 @@ public class FilterExceptions : IExceptionFilter
     {
         context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
         context.Result = new ObjectResult(new ErrorResponseJson(ResourceErrorMessages.UNKOWN_ERROR));
+    }
+
+    private void InvalidLoginExceptionHandler(ExceptionContext context)
+    {
+        var loginError = context.Exception as InvalidLoginException;
+        context.HttpContext.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+        context.Result = new ObjectResult(new ErrorResponseJson(loginError.Message));
     }
 }

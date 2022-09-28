@@ -2,4 +2,7 @@
 
 public class SmartCookbookException : SystemException
 {
+    public SmartCookbookException(string message) : base(message)
+    {
+    }
 }
