@@ -3,6 +3,7 @@ using SmartCookbook.Application.Services.Token;
 using SmartCookbook.Comunicacao.Request;
 using SmartCookbook.Comunicacao.Response;
 using SmartCookbook.Domain.Repositories;
+using SmartCookbook.Exceptions.ExceptionsBase;
 
 namespace SmartCookbook.Application.UseCases.Login.DoLogin;
 
@@ -26,7 +27,7 @@ public class LoginUseCase : ILoginUseCase
         var user = await _userReadOnlyRepository.RecuperaPorEmailSenha(request.Email, cryptographPassword);
 
         if (user == null)
-            throw new Exception();
+            throw new InvalidLoginException();
 
         return new LoginResponseJson
         {
