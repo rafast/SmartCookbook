@@ -9,6 +9,9 @@ namespace WebApi.Test;
 
 public class SmartCookbookWebApplicationFactory<TStartup> : WebApplicationFactory<TStartup> where TStartup : class
 {
+    private SmartCookbook.Domain.Entities.User user;
+    private string password;
+
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         builder.UseEnvironment("Test")
@@ -35,6 +38,18 @@ public class SmartCookbookWebApplicationFactory<TStartup> : WebApplicationFactor
                 var database = scopeService.GetRequiredService<SmartCookbookContext>();
 
                 database.Database.EnsureDeleted();
+
+                (user, password) = ContextSeedInMemory.Seed(database);
             });
+    }
+
+    public SmartCookbook.Domain.Entities.User GetUser()
+    {
+        return user;
+    }
+
+    public string GetPassword()
+    {
+        return password;
     }
 }
