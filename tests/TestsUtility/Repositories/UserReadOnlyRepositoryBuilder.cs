@@ -1,4 +1,5 @@
 ﻿using Moq;
+using SmartCookbook.Domain.Entities;
 using SmartCookbook.Domain.Repositories;
 
 namespace TestsUtility.Repositories;
@@ -26,6 +27,13 @@ public class UserReadOnlyRepositoryBuilder
     {
         if (!string.IsNullOrEmpty(email))
             _repository.Setup(i => i.IsEmailInUse(email)).ReturnsAsync(true);
+
+        return this;
+    }
+
+    public UserReadOnlyRepositoryBuilder GetByEmailAndPassword(User user)
+    {
+        _repository.Setup(i => i.RecuperaPorEmailSenha(user.Email, user.Password)).ReturnsAsync(user);
 
         return this;
     }
