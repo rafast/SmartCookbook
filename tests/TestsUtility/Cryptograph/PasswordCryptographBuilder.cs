@@ -6,6 +6,6 @@ public class PasswordCryptographBuilder
 {
     public static PasswordCryptograph Instance()
     {
-        return new PasswordCryptograph("saltABCD123");
+        return new PasswordCryptograph("$5gSgH47ctrr");
     }
 }
