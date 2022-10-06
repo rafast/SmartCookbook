@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SmartCookbook.Application.Cryptograph;
+using SmartCookbook.Application.Services.CurrentUser;
 using SmartCookbook.Application.Services.Token;
 using SmartCookbook.Application.UseCases.Login.DoLogin;
 using SmartCookbook.Application.UseCases.User.Register;
@@ -14,7 +15,13 @@ public static class Bootstraper
         AddSaltPassword(services, configuration);
         AddJWTToken(services, configuration);
         AddUseCases(services);
+        AddCurrentUser(services);
     
+    }
+
+    private static void AddCurrentUser(IServiceCollection services)
+    {
+        services.AddScoped<ICurrentUser, CurrentUser>();
     }
 
     private static void AddSaltPassword(IServiceCollection services, IConfiguration configuration)
