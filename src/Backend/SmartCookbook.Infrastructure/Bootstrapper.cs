@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SmartCookbook.Domain.Extension;
 using SmartCookbook.Domain.Repositories;
+using SmartCookbook.Domain.Repositories.User;
 using SmartCookbook.Infrastructure.RepositoryAccess;
 using System.Reflection;
 
@@ -59,6 +60,7 @@ public static class Bootstrapper
     private static void AddRepositories(IServiceCollection services)
     {
         services.AddScoped<IUserWriteOnlyRepository, UserRepository>()
-                .AddScoped<IUserReadOnlyRepository, UserRepository>();
+                .AddScoped<IUserReadOnlyRepository, UserRepository>()
+                .AddScoped<IUserUpdateOnlyRepository, UserRepository>();
     }
 }
