@@ -106,6 +106,15 @@ namespace SmartCookbook.Exceptions {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Login again on the App.
+        /// </summary>
+        public static string EXPIRED_TOKEN {
+            get {
+                return ResourceManager.GetString("EXPIRED_TOKEN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Invalid email or password.
         /// </summary>
         public static string INVALID_LOGIN {
@@ -147,6 +156,15 @@ namespace SmartCookbook.Exceptions {
         public static string INVALID_USER_PHONE {
             get {
                 return ResourceManager.GetString("INVALID_USER_PHONE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a You are not allowed to access this feature.
+        /// </summary>
+        public static string NOT_ALLOWED_USER {
+            get {
+                return ResourceManager.GetString("NOT_ALLOWED_USER", resourceCulture);
             }
         }
         

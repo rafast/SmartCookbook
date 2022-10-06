@@ -4,6 +4,7 @@ using SmartCookbook.Application.Cryptograph;
 using SmartCookbook.Application.Services.CurrentUser;
 using SmartCookbook.Application.Services.Token;
 using SmartCookbook.Application.UseCases.Login.DoLogin;
+using SmartCookbook.Application.UseCases.User.ChangePassword;
 using SmartCookbook.Application.UseCases.User.Register;
 
 namespace SmartCookbook.Application;
@@ -40,6 +41,7 @@ public static class Bootstraper
     private static void AddUseCases(IServiceCollection services)
     {
         services.AddScoped<IRegisterUserUseCase, RegisterUserUseCase>()
-                .AddScoped<ILoginUseCase, LoginUseCase>();
+                .AddScoped<ILoginUseCase, LoginUseCase>()
+                .AddScoped<IChangePasswordUseCase, ChangePasswordUseCase>();
     }
 }

@@ -132,6 +132,9 @@
   <data name="EMPTY_USER_PHONE" xml:space="preserve">
     <value>Phone is required</value>
   </data>
+  <data name="EXPIRED_TOKEN" xml:space="preserve">
+    <value>Login again on the App</value>
+  </data>
   <data name="INVALID_LOGIN" xml:space="preserve">
     <value>Invalid email or password</value>
   </data>
@@ -146,6 +149,9 @@
   </data>
   <data name="INVALID_USER_PHONE" xml:space="preserve">
     <value>Phone must be in format XX X XXXX-XXXX</value>
+  </data>
+  <data name="NOT_ALLOWED_USER" xml:space="preserve">
+    <value>You are not allowed to access this feature</value>
   </data>
   <data name="UNKOWN_ERROR" xml:space="preserve">
     <value>Unkown error</value>
