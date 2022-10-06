@@ -132,6 +132,9 @@
   <data name="EMPTY_USER_PHONE" xml:space="preserve">
     <value>Telefone é obrigatório</value>
   </data>
+  <data name="INVALID_OLDPASSWORD" xml:space="preserve">
+    <value>Senha atual inválida</value>
+  </data>
   <data name="INVALID_USER_EMAIL" xml:space="preserve">
     <value>Email deve ser válido</value>
   </data>

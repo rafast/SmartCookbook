@@ -115,6 +115,15 @@ namespace SmartCookbook.Exceptions {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Invalid oldpassword.
+        /// </summary>
+        public static string INVALID_OLDPASSWORD {
+            get {
+                return ResourceManager.GetString("INVALID_OLDPASSWORD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Email must be valid.
         /// </summary>
         public static string INVALID_USER_EMAIL {
