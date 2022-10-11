@@ -86,6 +86,9 @@
 							"    pm.response.to.be.json;\r",
 							"    pm.response.to.have.jsonBody(\"name\");\r",
 							"    pm.response.to.have.jsonBody(\"token\");\r",
+							"\r",
+							"    let jsonData = pm.response.json();\r",
+							"    pm.environment.set(\"TOKEN\", jsonData.token);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -140,6 +143,117 @@
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n  \"email\": \"invalido@invalido.com\",\r\n  \"password\": \"senhaInvalida\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URLBASE}}/login",
+					"host": [
+						"{{URLBASE}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change password Sucess",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Success API change password\", function(){\r",
+							"    pm.response.to.have.status(204);\r",
+							"    \r",
+							"    var newPassword = pm.globals.get(\"NEWPASSWORD\");\r",
+							"\r",
+							"    pm.globals.set(\"PASSWORD\", newPassword);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let newPassword = pm.variables.replaceIn('{{$randomPassword}}');\r",
+							"\r",
+							"pm.globals.set(\"NEWPASSWORD\", newPassword);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"oldPassword\": \"{{PASSWORD}}\",\r\n  \"newPassword\": \"{{NEWPASSWORD}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URLBASE}}/user/change-password",
+					"host": [
+						"{{URLBASE}}"
+					],
+					"path": [
+						"user",
+						"change-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User Success After change password",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Success API login\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.be.withBody;\r",
+							"    pm.response.to.be.json;\r",
+							"    pm.response.to.have.jsonBody(\"name\");\r",
+							"    pm.response.to.have.jsonBody(\"token\");\r",
+							"\r",
+							"    let jsonData = pm.response.json();\r",
+							"    pm.environment.set(\"TOKEN\", jsonData.token);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"{{EMAIL}}\",\r\n  \"password\": \"{{PASSWORD}}\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
