@@ -8,6 +8,8 @@ using SmartCookbook.Domain.Extension;
 using SmartCookbook.Infrastructure;
 using SmartCookbook.Infrastructure.Migrations;
 using SmartCookbook.Infrastructure.RepositoryAccess;
+using System;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -75,3 +77,4 @@ void UpdateDatabase()
 }
 
 public partial class Program { }
+
