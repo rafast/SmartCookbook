@@ -27,14 +27,14 @@ public static class Bootstraper
 
     private static void AddSaltPassword(IServiceCollection services, IConfiguration configuration)
     {
-        var section = configuration.GetRequiredSection("Configurations:SaltPassword");
+        var section = configuration.GetRequiredSection("Configurations:Password:SaltPassword");
         services.AddScoped(opt => new PasswordCryptograph(section.Value));
     }
 
     private static void AddJWTToken(IServiceCollection services, IConfiguration configuration)
     {
-        var sectionExpirationTime = configuration.GetRequiredSection("Configurations:TokenExpirationTime");
-        var sectionTokenKey = configuration.GetRequiredSection("Configurations:TokenKey");
+        var sectionExpirationTime = configuration.GetRequiredSection("Configurations:Jwt:TokenExpirationTimeMinutes");
+        var sectionTokenKey = configuration.GetRequiredSection("Configurations:Jwt:TokenKey");
         services.AddScoped(opt => new TokenController(int.Parse(sectionExpirationTime.Value), sectionTokenKey.Value));
     }
 

@@ -2,14 +2,13 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SmartCookbook.API.Filters;
+using SmartCookbook.API.Middleware;
 using SmartCookbook.Application;
 using SmartCookbook.Application.Services.Automapper;
 using SmartCookbook.Domain.Extension;
 using SmartCookbook.Infrastructure;
 using SmartCookbook.Infrastructure.Migrations;
 using SmartCookbook.Infrastructure.RepositoryAccess;
-using System;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,7 +21,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddRepository(builder.Configuration);
+builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication(builder.Configuration);
 
 builder.Services.AddMvc(opt =>
@@ -53,6 +52,8 @@ app.UseAuthorization();
 app.MapControllers();
 
 UpdateDatabase();
+
+app.UseMiddleware<CultureMiddleware>();
 
 app.Run();
 
