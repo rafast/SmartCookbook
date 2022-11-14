@@ -2,5 +2,6 @@
 
 public enum EnumVersions
 {
-    CriarTabelaUsuario = 1
+    CriarTabelaUsuario = 1,
+    CriarTabelaReceita = 2
 }
