@@ -24,15 +24,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication(builder.Configuration);
 
-builder.Services.AddMvc(opt =>
-{
-    opt.Filters.Add(typeof(FilterExceptions));
-});
+builder.Services.AddMvc(opt => opt.Filters.Add(typeof(FilterExceptions)));
 
-builder.Services.AddScoped(provider => new AutoMapper.MapperConfiguration(cfg =>
-{
-    cfg.AddProfile(new AutomapperConfig());
-}).CreateMapper());
+builder.Services.AddScoped(provider => new AutoMapper.MapperConfiguration(cfg => cfg.AddProfile(new AutomapperConfig())).CreateMapper());
 
 builder.Services.AddScoped<AuthenticatedUser>();
 

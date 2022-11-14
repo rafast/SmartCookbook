@@ -21,17 +21,19 @@ public class FilterExceptions : IExceptionFilter
         }
     }
 
-    private void SmartCookbookExceptionHandler(ExceptionContext context)
+    private static void SmartCookbookExceptionHandler(ExceptionContext context)
     {
         if (context.Exception is ValidationErrorException)
         {
             ValidationErrorExceptionHandler(context);
         }
-        else if(context.Exception is InvalidLoginException)
+        else if (context.Exception is InvalidLoginException)
+        {
             InvalidLoginExceptionHandler(context);
+        }
     }
 
-    private void ValidationErrorExceptionHandler(ExceptionContext context)
+    private static void ValidationErrorExceptionHandler(ExceptionContext context)
     {
         var validationErrorException = context.Exception as ValidationErrorException;
 
@@ -39,13 +41,13 @@ public class FilterExceptions : IExceptionFilter
         context.Result = new ObjectResult(new ErrorResponseJson(validationErrorException!.ErrorMessages));
     }
 
-    private void ThrowUnkownError(ExceptionContext context)
+    private static void ThrowUnkownError(ExceptionContext context)
     {
         context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
         context.Result = new ObjectResult(new ErrorResponseJson(ResourceErrorMessages.UNKOWN_ERROR));
     }
 
-    private void InvalidLoginExceptionHandler(ExceptionContext context)
+    private static void InvalidLoginExceptionHandler(ExceptionContext context)
     {
         var loginError = context.Exception as InvalidLoginException;
         context.HttpContext.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
