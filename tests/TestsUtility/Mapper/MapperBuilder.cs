@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SmartCookbook.Application.Services.Automapper;
+using TestsUtility.Hashids;
 
 namespace TestsUtility.Mapper
 {
@@ -7,10 +8,8 @@ namespace TestsUtility.Mapper
     {
         public static IMapper Instance()
         {
-            var configuration = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<AutomapperConfig>();
-            });
+            var hashids = HashidsBuilder.Instance().Build();
+            var configuration = new MapperConfiguration(cfg => cfg.AddProfile(new AutomapperConfig(hashids)));
 
             return configuration.CreateMapper();
         }

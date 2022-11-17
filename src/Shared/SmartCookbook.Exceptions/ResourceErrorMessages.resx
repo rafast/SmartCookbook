@@ -156,4 +156,25 @@
   <data name="UNKOWN_ERROR" xml:space="preserve">
     <value>Unkown error</value>
   </data>
+  <data name="EMPTY_RECIPE_TITLE" xml:space="preserve">
+    <value>Title is required</value>
+  </data>
+  <data name="INVALID_RECIPE_CATEGORY" xml:space="preserve">
+    <value>Invalid recipe category</value>
+  </data>
+  <data name="EMPTY_RECIPE_INSTRUCTIONS" xml:space="preserve">
+    <value>Instructions is required</value>
+  </data>
+  <data name="EMPTY_RECIPE_INGREDIENTS" xml:space="preserve">
+    <value>Recipe must have at least 1 ingredient</value>
+  </data>
+  <data name="EMPTY_INGREDIENT_NAME" xml:space="preserve">
+    <value>Name is required</value>
+  </data>
+  <data name="EMPTY_INGREDIENT_QUANTITY" xml:space="preserve">
+    <value>Quantity is required</value>
+  </data>
+  <data name="REPEATED_RECIPE_INGREDIENT" xml:space="preserve">
+    <value>Duplicate ingredient is not allowed</value>
+  </data>
 </root>
