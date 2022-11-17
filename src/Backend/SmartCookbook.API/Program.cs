@@ -1,3 +1,4 @@
+using HashidsNet;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,7 +27,7 @@ builder.Services.AddApplication(builder.Configuration);
 
 builder.Services.AddMvc(opt => opt.Filters.Add(typeof(FilterExceptions)));
 
-builder.Services.AddScoped(provider => new AutoMapper.MapperConfiguration(cfg => cfg.AddProfile(new AutomapperConfig())).CreateMapper());
+builder.Services.AddScoped(provider => new AutoMapper.MapperConfiguration(cfg => cfg.AddProfile(new AutomapperConfig(provider.GetService<IHashids>()))).CreateMapper());
 
 builder.Services.AddScoped<AuthenticatedUser>();
 
